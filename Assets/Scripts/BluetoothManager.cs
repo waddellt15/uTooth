@@ -60,6 +60,7 @@ namespace UnityBluetooth
             //int bytesRead = serialPort.Read(data, 0, data.Length);
             char latChar;
             String inBuff = "";//@"{""humidity"":""10"",""moisture"":""2"",""temperature"":"".2""}";
+            
             if (serialPort.BytesToRead != 0)
             {
                 inBuff = serialPort.ReadTo("}");

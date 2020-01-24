@@ -2306,6 +2306,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 3732229947653939009, guid: df911d88b5bb3b147bebc9db1fce34d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 841768590149928595, guid: df911d88b5bb3b147bebc9db1fce34d9,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 2100000, guid: 994e28dbc91f44e4fba67d549ff7e89f, type: 2}
     - target: {fileID: 6851012697775745164, guid: df911d88b5bb3b147bebc9db1fce34d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2376,11 +2386,6 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.41
       objectReference: {fileID: 0}
-    - target: {fileID: 841768590149928595, guid: df911d88b5bb3b147bebc9db1fce34d9,
-        type: 3}
-      propertyPath: rend
-      value: 
-      objectReference: {fileID: 2100000, guid: 994e28dbc91f44e4fba67d549ff7e89f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df911d88b5bb3b147bebc9db1fce34d9, type: 3}
 --- !u!4 &1142633883 stripped
@@ -2400,6 +2405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinnerPlant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 46860d7863a7b404d87587b8bd656afd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 46860d7863a7b404d87587b8bd656afd,
         type: 3}
@@ -4065,6 +4075,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LocalAvatar
       objectReference: {fileID: 0}
+    - target: {fileID: 158226, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 463470, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4310,6 +4324,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TreeStuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760646891938945988, guid: 0f7e1fd801b7e4c2d94c44d6fab21855,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 178657395165372711, guid: 0f7e1fd801b7e4c2d94c44d6fab21855,
         type: 3}

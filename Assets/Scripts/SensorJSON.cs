@@ -2,9 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace UnityBluetooth {
-    public class SensorJSON : MonoBehaviour {
+namespace UnityBluetooth
+{
+    public class SensorJSON : MonoBehaviour
+    {
         public int sensorQuantity;
         [SerializeField]
         public SensorObject hSensors;
@@ -16,7 +20,14 @@ namespace UnityBluetooth {
         public treeHit outp;
         [SerializeField]
         public OutputObject outPut;
-        void Start() {
+        public String retString;
+
+        float cachedMoister = -1.0f;
+        int frameCounter = 0;
+        int framesToWait = 60;
+
+        async void Start()
+        {
             hSensors = new SensorObject
             {
                 humidity = "0",
@@ -28,22 +39,42 @@ namespace UnityBluetooth {
             {
                 light = "0"
             };
+
             jsonStringTest = JsonUtility.ToJson(hSensors);
             Debug.Log(jsonStringTest);
-            if (float.Parse(hSensors.moisture) < 0.5f) {
+            if (float.Parse(hSensors.moisture) < 0.5f)
+            {
                 rController.makeItRain = false;
             }
+            Debug.Log("here");
+            //await updateSensors();
+            Task.Run( async() =>
+            {
+                while (true)
+                {
+                    Debug.Log("here");
+                    retString = BluetoothManager.ReceiveData();
+                    BluetoothManager.SendData(outPut.light);
+                    //await Task.Delay(200);
+                }
+            });
         }
-
+        async Task updateSensors()
+        {
+            while (true)
+            {
+                Debug.Log("here");
+                hSensors = JsonUtility.FromJson<SensorObject>(BluetoothManager.ReceiveData());
+            }
+        }
 
         void Update()
         {
             //outPut.light = outp.hit;
-            BluetoothManager.SendData(outPut.light);
-            hSensors = JsonUtility.FromJson<SensorObject>(BluetoothManager.ReceiveData());
+
+            hSensors = JsonUtility.FromJson<SensorObject>(retString);
             if (hSensors != null)
             {
-                Debug.Log(jsonStringTest);
                 if (float.Parse(hSensors.moisture) > 500)
                 {
                     rController.makeItRain = true;
@@ -78,12 +109,14 @@ namespace UnityBluetooth {
                 }
             }
         }
+
     }
 }
 
 
 [Serializable]
-public class SensorObject {
+public class SensorObject
+{
     public string humidity;
     public string moisture;
     public string temperature;
@@ -94,5 +127,3 @@ public class OutputObject
 {
     public string light;
 }
-
-
